@@ -8,12 +8,12 @@
 ## 使用方法
 1. Compile
 ```
-make
+$ make
 ```
 
 2. Execution
 ```
-./svm
+$ ./svm
 ```
 
 Then, you will choose sample data file and kernel type.
