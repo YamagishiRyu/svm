@@ -6,18 +6,18 @@
 #include <fstream>
 #include "quadprog++.hh"
 
+using namespace std;
+
 int degree = 2;
 double sigma = 10;
 
 double inner_product(int way, std::pair<double, double> x0, std::pair<double, double> x1);
+string input_filename();
 
 int main (int argc, char *const argv[]) {
-  using namespace std;
 
   // hear file name
-  char filename[128];
-  cout << "What is data file name ?" << endl;
-  cin >> filename;
+  string filename = input_filename();
 
   // hear kernel type
   int kernel;
@@ -232,6 +232,13 @@ int main (int argc, char *const argv[]) {
   fprintf(gp, "unset multiplot\n");
   pclose(gp);
   return 0;
+}
+
+string input_filename(){
+  string filename;
+  cout << "What is data file name ?" << endl;
+  cin >> filename;
+  return filename;
 }
 
 double inner_product(int way, std::pair<double, double> x0, std::pair<double, double> x1){
