@@ -11,7 +11,7 @@
 make
 ```
 
-2. execution
+2. Execution
 ```
 ./svm
 ```
