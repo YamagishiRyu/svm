@@ -6,27 +6,22 @@
 #include <fstream>
 #include "quadprog++.hh"
 
+using namespace std;
+
 int degree = 2;
 double sigma = 10;
 
 double inner_product(int way, std::pair<double, double> x0, std::pair<double, double> x1);
+string input_filename();
+int input_kernel_type();
 
 int main (int argc, char *const argv[]) {
-  using namespace std;
 
   // hear file name
-  char filename[128];
-  cout << "What is data file name ?" << endl;
-  cin >> filename;
+  string filename = input_filename();
 
   // hear kernel type
-  int kernel;
-  cout << "Choose kernel type(0: none, 1: polynomial, 2: Gauss)." << endl;
-  cin >> kernel;
-  if(kernel < 0 || kernel > 2){
-    cerr << "kernel type is not appropriate." << endl;
-    exit(0);
-  }
+  int kernel = input_kernel_type();
 
   // file open
   ifstream ifs(filename);
@@ -232,6 +227,24 @@ int main (int argc, char *const argv[]) {
   fprintf(gp, "unset multiplot\n");
   pclose(gp);
   return 0;
+}
+
+string input_filename(){
+  string filename;
+  cout << "What is data file name ?" << endl;
+  cin >> filename;
+  return filename;
+}
+
+int input_kernel_type(){
+  int kernel;
+  cout << "Choose kernel type(0: none, 1: polynomial, 2: Gauss)." << endl;
+  cin >> kernel;
+  if(kernel < 0 || kernel > 2){
+    cerr << "kernel type is not appropriate." << endl;
+    exit(0);
+  }
+  return kernel;
 }
 
 double inner_product(int way, std::pair<double, double> x0, std::pair<double, double> x1){
