@@ -37,7 +37,6 @@ int main (int argc, char *const argv[]) {
   vector<double> y;
   int data_size = import_data(&ifs, &x, &y);
   cout << "data size: " << x.size() << endl;
-
   if(divide_num > x.size()){
     cout << "The number of data was very samall. So data will be divide into " << x.size() << " groups." << endl;
     divide_num = x.size();
